@@ -22,4 +22,18 @@ public class LyricTest
             }
         }
     }
+
+    [Fact]
+    public async Task LyricFetchTest()
+    {
+        string name = "繭色";
+        string album = name;
+        string artists = "sajou no hana";
+        string id = "3z0Rh5nn1cunyc8t3GH7Vs";
+        Lyrics? lyrics = await LyricService.Fetch(name, artists, album, id);
+        Assert.NotNull(lyrics);
+        Assert.NotNull(lyrics?.Original);
+        Assert.NotNull(lyrics?.Translated);
+        Assert.NotNull(lyrics?.Romaji);
+    }
 }
